@@ -1,16 +1,64 @@
 <!DOCTYPE html>
 <html>
-<body>
+<head>
+<style>
+  .btn-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+  }
 
-<video width="1200" controls>
+  button {
+      padding: 1.5rem 3rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+      background: #2196F3;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      transition: transform 0.2s;
+  }
+</style>
+</head>
+<body>
+<video id="myVideo" width="1200" controls>
   <source src="big-buck-bunny_trailer.webm" type="video/webm">
 <!--   <source src="Big_Buck_mp4.mp4" type="video/mp4"> -->
   Your browser does not support HTML video.
 </video>
+<div class="btn-group">
+    <button onclick="playVideo()">▶ Play Video</button>
+    <button onclick="keepControlsVisible()">🔒 Keep Controls Visible</button>
+</div>
 
   
 <h2>Some other stuff</h2>
 <p>Lorem Ipsum blah blah.</p>
+
+<script>
+    const video = document.getElementById('myVideo');
+
+    // Play/pause functionality
+    function playVideo() {
+        if (video.paused) {
+            video.play();
+        } else {
+            video.pause();
+        }
+    }
+
+    function videoTimeUpdate(e)
+    {
+      video.setAttribute("controls", "controls");
+    }
+
+    // Force controls visibility
+    function keepControlsVisible() {
+        video.addEventListener('timeupdate', videoTimeUpdate, false);
+    }
+  
+
+</script>
 </body>
 </html>
 
