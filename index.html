@@ -52,7 +52,9 @@
   <div id="animated-div"></div>
 
 <h2>Some other stuff</h2>
-<p>Lorem Ipsum blah blah.</p>
+<p>canvas webgl</p>
+  
+<canvas id="myCanvas" width="200" height="100"></canvas>
 
 <script>
     const video = document.getElementById('myVideo');
@@ -81,6 +83,23 @@
     const element = document.getElementById('animated-div');
     element.style.display = element.style.display === 'none' ? 'block' : 'none';
   }
+
+
+  const canvas = document.getElementById("myCanvas");
+
+  // Initialize the GL context
+  const gl = canvas.getContext("webgl");
+  
+  // Only continue if WebGL is available
+  if (!gl) {
+    alert("Your browser does not support WebGL.");
+  }
+  
+  // Set color buffer to red (1,0,0) and opaque (1)
+  gl.clearColor(1, 0, 0, 1);
+  
+  //Set the color with the color buffer
+  gl.clear(gl.COLOR_BUFFER_BIT);
   
 
 </script>
