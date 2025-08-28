@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  .btn-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+  }
+
+  button {
+      padding: 1.5rem 3rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+      background: #2196F3;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      transition: transform 0.2s;
+  }
+
+  #animated-div {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    position: relative;
+    animation: myfirst 5s linear 2s infinite alternate;
+    display: none;
+  }
+  
+  @keyframes myfirst {
+    0%   {background-color:red; left:0px; top:0px;}
+    25%  {background-color:yellow; left:200px; top:0px;}
+    50%  {background-color:blue; left:200px; top:200px;}
+    75%  {background-color:green; left:0px; top:200px;}
+    100% {background-color:red; left:0px; top:0px;}
+  }
+</style>
+</head>
+<body>
+<video id="myVideo" width="1200" controls="true">
+  <source src="big-buck-bunny_trailer.webm" type="video/webm">
+  Your browser does not support HTML video.
+</video>
+<div class="btn-group">
+    <button onclick="playVideo()">▶ Play Video</button>
+    <button onclick="showAnimation()">Animation</button>
+</div>
+
+  <div id="animated-div"></div>
+<!-- 
+<h2>Some other stuff</h2>
+<p>canvas webgl</p>
+  
+<canvas id="myCanvas" width="200" height="100"></canvas> -->
+
+<script>
+    const video = document.getElementById('myVideo');
+
+    // Play/pause functionality
+    function playVideo() {
+        if (video.paused) {
+            video.play();
+        } else {
+            video.pause();
+        }
+    }
+
+    function videoTimeUpdate(e)
+    {
+      video.setAttribute("controls", "controls");
+    }
+
+    // Force controls visibility
+    function keepControlsVisible() {
+        video.addEventListener('timeupdate', videoTimeUpdate, false);
+    }
+
+  function showAnimation()
+  {
+    const element = document.getElementById('animated-div');
+    element.style.display = element.style.display === 'none' ? 'block' : 'none';
+  }
+
+
+  // const canvas = document.getElementById("myCanvas");
+
+  // // Initialize the GL context
+  // const gl = canvas.getContext("webgl");
+  
+  // // Only continue if WebGL is available
+  // if (!gl) {
+  //   alert("Your browser does not support WebGL.");
+  // }
+  
+  // // Set color buffer to red (1,0,0) and opaque (1)
+  // gl.clearColor(1, 0, 0, 1);
+  
+  // //Set the color with the color buffer
+  // gl.clear(gl.COLOR_BUFFER_BIT);
+  
+
+</script>
+</body>
+</html>
+
+ 
